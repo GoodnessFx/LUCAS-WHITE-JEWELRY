@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lucaswhitejewelry.com/sitemap.xml
