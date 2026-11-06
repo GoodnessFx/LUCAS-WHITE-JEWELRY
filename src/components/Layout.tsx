@@ -242,7 +242,9 @@ export function Layout() {
             </p>
             <a
               className="mt-7 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/50 transition-colors hover:text-gold"
-              href="https://instagram.com/lucaswhitejewelry"
+              href="https://www.instagram.com/lucaswhitejewelry"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <span className="grid h-4 w-4 place-items-center rounded border border-current text-[8px]">
                 IG

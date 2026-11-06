@@ -2,16 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router";
 
-/*
-  FOUNDER IMAGES
-  --------------
-  To use the real founder images:
-  1. Save portrait 1 (company logo / CEO) to: public/images/founder-portrait.jpg
-  2. Save portrait 2 (CEO with tie) to:      public/images/founder-tie.jpg
-  Then replace the `src` values below with:
-     src="/images/founder-portrait.jpg"
-     src="/images/founder-tie.jpg"
-*/
+// Founder portraits served from /public/images/
 
 export function FounderSection() {
   return (
@@ -58,9 +49,9 @@ export function FounderSection() {
             className="mt-12"
           >
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=85"
-              alt="Lucas White, founder"
-              className="aspect-[3/4] w-full object-cover shadow-xl"
+              src="/images/founder-portrait.jpg"
+              alt="Lucas White, founder and CEO"
+              className="aspect-[3/4] w-full object-cover object-top shadow-xl"
             />
           </motion.div>
           <motion.div
@@ -70,9 +61,9 @@ export function FounderSection() {
             transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
             <img
-              src="https://images.unsplash.com/photo-1518573167487-1d87c4f0d3f3?auto=format&fit=crop&w=900&q=85"
-              alt="Lucas White at the bench"
-              className="aspect-[3/4] w-full object-cover shadow-xl"
+              src="/images/founder-tie.jpg"
+              alt="Lucas White, CEO"
+              className="aspect-[3/4] w-full object-cover object-top shadow-xl"
             />
           </motion.div>
         </div>
