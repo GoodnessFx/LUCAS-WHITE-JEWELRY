@@ -24,11 +24,16 @@ const photos = [
   "https://images.unsplash.com/photo-1615974570340-b01904376f91?auto=format&fit=crop&w=1200&q=85",
   "https://images.unsplash.com/photo-1606623546924-a4f3ae5ea3e8?auto=format&fit=crop&w=1200&q=85",
   "https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1598560917807-1bae44bd2be8?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1573408301185-9519f94652c7?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85",
 ];
 
 type Seed = [string, string, string, string, string, number, string];
 
 const seeds: Seed[] = [
+  // ── RINGS ──
   [
     "Imperial Signet Ring",
     "Rings",
@@ -138,6 +143,62 @@ const seeds: Seed[] = [
     "A refined narrow band shaped for comfort and finished to a lasting high shine.",
   ],
   [
+    "Sapphire Cluster Ring",
+    "Rings",
+    "White Gold",
+    "18K",
+    "Sapphire",
+    3850,
+    "A vivid sapphire centre stone is encircled by a halo of brilliant-cut diamonds in refined white gold.",
+  ],
+  [
+    "Infinity Twist Ring",
+    "Rings",
+    "Rose Gold",
+    "18K",
+    "Diamond",
+    2650,
+    "Two pavé-set bands intertwine in an eternal loop, symbolising boundless connection.",
+  ],
+  [
+    "Heritage Signet Oval",
+    "Rings",
+    "Yellow Gold",
+    "18K",
+    "None",
+    1680,
+    "A wider oval signet with a deeply engraved cartouche surround, ready for a family crest.",
+  ],
+  [
+    "Platinum Knife Edge Band",
+    "Rings",
+    "Platinum",
+    "950",
+    "None",
+    2200,
+    "Crisp bevelled edges converge to a razor-fine ridge, catching light with architectural precision.",
+  ],
+  [
+    "Midnight Onyx Band",
+    "Rings",
+    "Yellow Gold",
+    "18K",
+    "Onyx",
+    1920,
+    "A full band of deep black onyx inlay set flush in warm yellow gold for bold, modern contrast.",
+  ],
+  [
+    "Pearl Cabochon Ring",
+    "Rings",
+    "Yellow Gold",
+    "14K",
+    "Pearl",
+    1140,
+    "A single lustrous pearl sits in a bezel of hand-hammered gold, understated and timeless.",
+  ],
+
+  // ── NECKLACES ──
+  [
     "Sovereign Cuban Chain",
     "Necklaces",
     "Yellow Gold",
@@ -228,6 +289,35 @@ const seeds: Seed[] = [
     "Closely woven links form a smooth ribbon of gold with a fluid, silk-like drape.",
   ],
   [
+    "Emerald Teardrop Pendant",
+    "Necklaces",
+    "Yellow Gold",
+    "18K",
+    "Emerald",
+    3200,
+    "A pear-shaped emerald with vivid depth is suspended in a hand-crafted open-claw setting.",
+  ],
+  [
+    "Anchor Chain Necklace",
+    "Necklaces",
+    "Silver",
+    "925",
+    "None",
+    280,
+    "A substantial sterling silver anchor chain with a secure lobster clasp and clean uniform links.",
+  ],
+  [
+    "Crescent Moon Pendant",
+    "Necklaces",
+    "Rose Gold",
+    "14K",
+    "Diamond",
+    1380,
+    "A delicate crescent set with three graduated diamonds, suspended on an adjustable trace chain.",
+  ],
+
+  // ── BRACELETS ──
+  [
     "Rivière Tennis Bracelet",
     "Bracelets",
     "White Gold",
@@ -299,6 +389,35 @@ const seeds: Seed[] = [
     140,
     "A delicate gold chain with a tiny polished bead offers a subtle glint at the wrist.",
   ],
+  [
+    "Sapphire Bangle",
+    "Bracelets",
+    "White Gold",
+    "18K",
+    "Sapphire",
+    4100,
+    "A rigid white-gold bangle set with a continuous channel of velvety blue sapphires.",
+  ],
+  [
+    "Hammered Cuff",
+    "Bracelets",
+    "Rose Gold",
+    "18K",
+    "None",
+    1240,
+    "A wide rose-gold cuff with a hand-hammered surface that catches light beautifully throughout the day.",
+  ],
+  [
+    "Pearl Station Bracelet",
+    "Bracelets",
+    "Yellow Gold",
+    "14K",
+    "Pearl",
+    980,
+    "Five Akoya pearls are set at even intervals along a fine gold chain for an effortlessly elegant look.",
+  ],
+
+  // ── EARRINGS ──
   [
     "Signature Diamond Studs",
     "Earrings",
@@ -372,6 +491,35 @@ const seeds: Seed[] = [
     "Compact sterling hoops feature softly squared edges and an easy click fastening.",
   ],
   [
+    "Onyx Drop Earrings",
+    "Earrings",
+    "Yellow Gold",
+    "18K",
+    "Onyx",
+    1320,
+    "Elongated polished onyx drops hang from fine gold wires, striking in their simplicity.",
+  ],
+  [
+    "Platinum Stud Jackets",
+    "Earrings",
+    "Platinum",
+    "950",
+    "Diamond",
+    4600,
+    "A central diamond stud pairs with removable floating jacket halos, two looks in one.",
+  ],
+  [
+    "Rose Gold Ear Climbers",
+    "Earrings",
+    "Rose Gold",
+    "14K",
+    "Diamond",
+    1860,
+    "A pavé-set arc that follows the natural curve of the ear for an architectural, modern finish.",
+  ],
+
+  // ── GOLD BARS & COINS ──
+  [
     "Auric 1 Gram Gold Bar",
     "Gold Bars & Coins",
     "Yellow Gold",
@@ -435,6 +583,26 @@ const seeds: Seed[] = [
     "A substantial fifty-gram cast bar whose natural surface makes every piece subtly individual.",
   ],
   [
+    "Auric 100 Gram Gold Bar",
+    "Gold Bars & Coins",
+    "Yellow Gold",
+    "24K",
+    "None",
+    7200,
+    "A hundred-gram minted bar bearing the Lucas White hallmark, ideal for portfolio diversification.",
+  ],
+  [
+    "Quarter Ounce Sovereign",
+    "Gold Bars & Coins",
+    "Yellow Gold",
+    "24K",
+    "None",
+    680,
+    "A beautifully struck quarter-ounce gold coin with a classic sovereign profile and certificate.",
+  ],
+
+  // ── ACCESSORIES ──
+  [
     "Executive Onyx Cufflinks",
     "Accessories",
     "Yellow Gold",
@@ -453,7 +621,7 @@ const seeds: Seed[] = [
     "A precisely proportioned tie bar with a satin face and resilient spring clasp.",
   ],
   [
-    "Compass Men’s Pendant",
+    "Compass Men's Pendant",
     "Accessories",
     "Yellow Gold",
     "18K",
@@ -479,13 +647,31 @@ const seeds: Seed[] = [
     200,
     "A pair of weighty sterling collar stays, hand-finished and ready for personal engraving.",
   ],
+  [
+    "Diamond Money Clip",
+    "Accessories",
+    "Yellow Gold",
+    "18K",
+    "Diamond",
+    2200,
+    "A spring-loaded gold money clip set with a single flush-set diamond, understated luxury in hand.",
+  ],
+  [
+    "Gold Lapel Pin",
+    "Accessories",
+    "Yellow Gold",
+    "14K",
+    "None",
+    360,
+    "A polished geometric lapel pin finished with a secure locking back, refined sartorial detailing.",
+  ],
 ];
 
 export const products: Product[] = seeds.map((p, i) => ({
   id: `LW-${String(i + 1).padStart(3, "0")}`,
   slug: p[0]
     .toLowerCase()
-    .replace(/[’']/g, "")
+    .replace(/['']/g, "")
     .replace(/[^a-z0-9]+/g, "-"),
   name: p[0],
   category: p[1],
