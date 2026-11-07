@@ -50,12 +50,12 @@ export function FounderSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-12"
+            className="mt-12 aspect-[3/4] min-h-[340px]"
           >
             <img
               src={founderPortrait}
               alt="Lucas White, founder and CEO"
-              className="aspect-[3/4] w-full object-cover object-center shadow-xl"
+              className="aspect-[3/4] w-full h-full object-cover object-center shadow-xl"
             />
           </motion.div>
           <motion.div
@@ -63,11 +63,12 @@ export function FounderSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="aspect-[3/4] min-h-[340px]"
           >
             <img
               src={founderTie}
               alt="Lucas White, CEO"
-              className="aspect-[3/4] w-full object-cover object-center shadow-xl"
+              className="aspect-[3/4] w-full h-full object-cover object-center shadow-xl"
             />
           </motion.div>
         </div>
