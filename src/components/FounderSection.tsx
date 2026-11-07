@@ -2,7 +2,10 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router";
 
-// Founder portraits served from /public/images/
+// Founder portraits imported so Vite rewrites their URLs with the
+// deployment base (FIGMA_PUBLIC_URL on Figma Make / ppxl.app).
+import founderPortrait from "@/assets/founder-portrait.jpg";
+import founderTie from "@/assets/founder-tie.jpg";
 
 export function FounderSection() {
   return (
@@ -35,7 +38,8 @@ export function FounderSection() {
             to="/about"
             className="inline-flex items-center gap-2 self-start border-b border-black pb-1 text-[11px] uppercase tracking-widest group hover:text-gold hover:border-gold transition-colors"
           >
-            Our story <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+            Our story{" "}
+            <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>
 
@@ -49,9 +53,9 @@ export function FounderSection() {
             className="mt-12"
           >
             <img
-              src="/images/founder-portrait.jpg"
+              src={founderPortrait}
               alt="Lucas White, founder and CEO"
-              className="aspect-[3/4] w-full object-cover object-top shadow-xl"
+              className="aspect-[3/4] w-full object-cover object-center shadow-xl"
             />
           </motion.div>
           <motion.div
@@ -61,9 +65,9 @@ export function FounderSection() {
             transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
             <img
-              src="/images/founder-tie.jpg"
+              src={founderTie}
               alt="Lucas White, CEO"
-              className="aspect-[3/4] w-full object-cover object-top shadow-xl"
+              className="aspect-[3/4] w-full object-cover object-center shadow-xl"
             />
           </motion.div>
         </div>
