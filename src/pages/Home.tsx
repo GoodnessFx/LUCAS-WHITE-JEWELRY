@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { ProductCard } from "@/components/ProductCard";
+import { FounderSection } from "@/components/FounderSection";
 import { testimonials } from "@/data/content";
 import { products } from "@/data/products";
 import { business } from "@/config/business";
@@ -539,6 +540,7 @@ export function Home() {
       <HeroSection />
       <TrustBar />
       <Ticker />
+      <FounderSection />
       <Bestsellers />
       <CraftEditorial />
       <CategoryShowcase />
