@@ -46,8 +46,8 @@ export function FounderSection() {
         {/* Images */}
         <div className="grid grid-cols-2 gap-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 30 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="mt-12 aspect-[3/4] min-h-[340px]"
@@ -59,8 +59,8 @@ export function FounderSection() {
             />
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: -30 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
             className="aspect-[3/4] min-h-[340px]"
