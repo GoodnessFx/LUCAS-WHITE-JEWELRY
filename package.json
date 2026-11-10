@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-product-images.mjs && vite build && node scripts/prerender.mjs",
+    "build": "node scripts/generate-product-images.mjs && node scripts/generate-brand-assets.mjs && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "format": "oxfmt"
   },

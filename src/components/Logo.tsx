@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-// Referenced from /public/logo.jpg so it works in SSR-prerendered HTML
+// Referenced from /public/logo.png so it works in SSR-prerendered HTML
 // (Vite SSR does not rewrite imported asset URLs to hashed paths).
 export function Logo({ light = false }: { light?: boolean }) {
   return (
@@ -10,7 +10,7 @@ export function Logo({ light = false }: { light?: boolean }) {
       aria-label="Lucas White Jewelry home"
     >
       <img
-        src="/logo.jpg"
+        src="/logo.png"
         alt="Lucas White Jewelry"
         className="h-10 w-auto object-contain"
       />

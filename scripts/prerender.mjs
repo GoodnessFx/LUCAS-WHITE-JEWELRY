@@ -5,6 +5,8 @@ import { createServer } from "vite";
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, "dist");
 const SITE = "https://lucas-white-jewelry.shop";
+const LOGO_URL = `${SITE}/logo.png`;
+const DEFAULT_OG_IMAGE = `${SITE}/og-image.jpg`;
 
 const PAGES = [
   {
@@ -68,6 +70,7 @@ function truncate(str, max) {
 
 function injectHead(html, page) {
   let out = html
+    .replace(/("logo"\s*:\s*")[^"]*(")/g, `$1${LOGO_URL}$2`)
     // <title>
     .replace(/(<title[^>]*>)[\s\S]*?<\/title>/i, `$1${esc(page.title)}</title>`)
     // <meta name="description">
@@ -89,31 +92,19 @@ function injectHead(html, page) {
   const headEnd = out.indexOf("</head>");
   if (headEnd === -1) return out;
 
-  const before = out.slice(0, headEnd);
+  let before = out.slice(0, headEnd);
   const after = out.slice(headEnd);
 
   let insertion = "";
 
-  // canonical
-  if (/<link rel="canonical"[^>]*>/i.test(out)) {
-    insertion += out.match(/<link rel="canonical"[^>]*>/i)[0].replace(
-      /href="[^"]*"/,
-      `href="${SITE}${page.path === "/" ? "" : page.path}"`,
-    );
-  } else {
-    insertion += `<link rel="canonical" href="${SITE}${page.path === "/" ? "" : page.path}" />`;
-  }
+  const canonicalPattern = /<link rel=["']canonical["'][^>]*>/gi;
+  before = before.replace(canonicalPattern, "");
+  insertion += `<link rel="canonical" href="${SITE}${page.path === "/" ? "" : page.path}" />`;
 
-  // og:image (use page.ogImage if provided, else the site default from site.json)
-  if (page.ogImage) {
-    if (/<meta[^>]*\sproperty=["']og:image["'][^>]*>/i.test(out)) {
-      insertion += out
-        .match(/<meta[^>]*\sproperty=["']og:image["'][^>]*>/i)[0]
-        .replace(/content="[^"]*"/, `content="${esc(page.ogImage)}"`);
-    } else {
-      insertion += `<meta property="og:image" content="${esc(page.ogImage)}" />`;
-    }
-  }
+  const ogImage = page.ogImage || DEFAULT_OG_IMAGE;
+  const ogImagePattern = /<meta[^>]*\sproperty=["']og:image["'][^>]*>/gi;
+  before = before.replace(ogImagePattern, "");
+  insertion += `<meta property="og:image" content="${esc(ogImage)}" />`;
 
   for (const [prop, content] of [
     ["og:title", page.title],

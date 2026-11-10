@@ -52,21 +52,115 @@ function Ticker() {
   );
 }
 
+/* ─── Hero slides ────────────────────────────────────────────── */
+const HERO_SLIDES = [
+  {
+    src: "https://images.unsplash.com/photo-1615974570340-b01904376f91?auto=format&fit=crop&w=1800&q=90",
+    alt: "Fine gold rings from Lucas White Jewelry",
+    eyebrow: "The new heirlooms · Est. 2019",
+    headline: ["Lucas White", "Jewelry"],
+    sub: "Fine jewellery and gold trading — exceptional pieces in gold and precious metals, made to endure for generations.",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1800&q=90",
+    alt: "Pearl necklace with a diamond clasp in a presentation box",
+    eyebrow: "Master craftsmanship · 18K Gold",
+    headline: ["Crafted with", "intention."],
+    sub: "Every piece begins with responsibly sourced materials shaped by craftspeople who understand that the smallest details become the lasting ones.",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=1800&q=90",
+    alt: "Luxury jewelry on marble surface",
+    eyebrow: "Certificate of authenticity · Lifetime care",
+    headline: ["Objects of", "permanence."],
+    sub: "Each piece arrives with a certificate of authenticity and is supported by our lifetime polishing service — jewellery made to be worn, not locked away.",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1800&q=90",
+    alt: "Gold ring on elegant dark background",
+    eyebrow: "Berlin · Singapore · New York",
+    headline: ["Three cities,", "one standard."],
+    sub: "From our ateliers in Germany and Singapore to our New York showroom — private appointments and discreet international service.",
+  },
+] as const;
+
 /* ─── Parallax hero ──────────────────────────────────────────── */
 function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [slide, setSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState<number | null>(null);
+  const [transitioning, setTransitioning] = useState(false);
+
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
+  useEffect(() => {
+    HERO_SLIDES.forEach(({ src }) => {
+      const image = new Image();
+      image.decoding = "async";
+      image.src = src;
+    });
+  }, []);
+
+  // Auto-advance every 6 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goTo((slide + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [slide]);
+
+  function goTo(next: number) {
+    if (next === slide || transitioning) return;
+    setPrevSlide(slide);
+    setTransitioning(true);
+    setSlide(next);
+    setTimeout(() => {
+      setPrevSlide(null);
+      setTransitioning(false);
+    }, 900);
+  }
+
+  const current = HERO_SLIDES[slide];
+
   return (
     <section ref={containerRef} className="relative min-h-[92svh] overflow-hidden bg-[#0d0c09]">
-      {/* Parallax image */}
-      <motion.div style={{ y: imgY }} className="absolute inset-0 will-change-transform">
+
+      {/* Outgoing slide — fades out */}
+      {prevSlide !== null && (
+        <div className="absolute inset-0 will-change-transform" style={{ zIndex: 1 }}>
+          <motion.div
+            style={{ y: imgY }}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            transition={{ duration: 0.9, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <img
+              src={HERO_SLIDES[prevSlide].src}
+              alt={HERO_SLIDES[prevSlide].alt}
+              className="h-full w-full object-cover object-center opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          </motion.div>
+        </div>
+      )}
+
+      {/* Incoming slide — fades in with subtle zoom */}
+      <motion.div
+        key={slide}
+        initial={{ opacity: 0, scale: 1.04 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.9, ease: "easeInOut" }}
+        className="absolute inset-0 will-change-transform"
+        style={{ zIndex: 2 }}
+      >
         <img
-          src="https://images.unsplash.com/photo-1615974570340-b01904376f91?auto=format&fit=crop&w=1800&q=90"
-          alt="Fine gold rings from Lucas White Jewelry"
+          src={current.src}
+          alt={current.alt}
           className="h-full w-full object-cover object-center opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/10" />
@@ -74,43 +168,46 @@ function HeroSection() {
       </motion.div>
 
       {/* Liquid blobs */}
-      <div className="absolute right-[8%] top-[15%] h-72 w-72 liquid-blob bg-gold/10 opacity-30 will-change-transform" />
-      <div className="absolute right-[20%] bottom-[20%] h-48 w-48 liquid-blob bg-white/5 opacity-20 will-change-transform" style={{ animationDelay: "-4s" }} />
+      <div className="absolute right-[8%] top-[15%] h-72 w-72 liquid-blob bg-gold/10 opacity-30 will-change-transform" style={{ zIndex: 3 }} />
+      <div className="absolute right-[20%] bottom-[20%] h-48 w-48 liquid-blob bg-white/5 opacity-20 will-change-transform" style={{ animationDelay: "-4s", zIndex: 3 }} />
 
-      {/* Content */}
+      {/* Content — text cross-fades per slide */}
       <motion.div
         style={{ y: textY, opacity }}
         className="relative mx-auto flex min-h-[92svh] max-w-[1400px] items-center px-6 py-24 lg:px-10"
+        css-z="4"
       >
-        <div className="max-w-3xl text-white">
+        <div className="relative z-[4] max-w-3xl text-white">
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            key={`eyebrow-${slide}`}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-6 text-[10px] uppercase tracking-[.32em] text-white/60"
           >
-            The new heirlooms · Est. 2019
+            {current.eyebrow}
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 32 }}
+            key={`heading-${slide}`}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.85, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className="font-display text-[clamp(4rem,10vw,8.5rem)] leading-[.88] font-light"
           >
-            Lucas White Jewelry
+            {current.headline[0]}
             <br />
             <em className="block mt-2 text-[clamp(1.5rem,3vw,2.2rem)] font-light italic text-white/70">
-              Crafted for a lifetime.
+              {current.headline[1]}
             </em>
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            key={`sub-${slide}`}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.75, delay: 0.35 }}
             className="mt-8 max-w-md text-sm leading-7 text-white/75 font-light"
           >
-            Fine jewellery and gold trading — exceptional pieces in gold and precious metals,
-            thoughtfully sourced, individually inspected, and made to endure for generations.
+            {current.sub}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -135,20 +232,43 @@ function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Slide indicators + prev/next */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5" style={{ zIndex: 5 }}>
+        {/* Dot indicators */}
+        <div className="flex items-center gap-3">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`rounded-full transition-all duration-500 ${
+                i === slide
+                  ? "w-8 h-[3px] bg-white"
+                  : "w-[3px] h-[3px] bg-white/35 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
+        {/* Scroll hint */}
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-[9px] uppercase tracking-[.3em] text-white/40">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="h-6 w-px bg-gradient-to-b from-white/40 to-transparent"
+          />
+        </div>
+      </div>
+
+      {/* Progress bar */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[9px] uppercase tracking-[.3em] text-white/40">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="h-6 w-px bg-gradient-to-b from-white/40 to-transparent"
-        />
-      </motion.div>
+        key={`bar-${slide}`}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 6, ease: "linear" }}
+        className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gold/60"
+        style={{ zIndex: 5 }}
+      />
     </section>
   );
 }
