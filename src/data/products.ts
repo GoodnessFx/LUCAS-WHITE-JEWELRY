@@ -17,19 +17,6 @@ export type Product = {
 
 export const GOLD_PRICE_PER_GRAM = 72;
 
-const photos = [
-  "https://images.unsplash.com/photo-1611955167811-4711904bb9f8?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1705326455036-0fab8ecba04d?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1615974570340-b01904376f91?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1606623546924-a4f3ae5ea3e8?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1598560917807-1bae44bd2be8?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1200&q=85",
-  "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85",
-];
-
 type Seed = [string, string, string, string, string, number, string];
 
 const seeds: Seed[] = [
@@ -689,9 +676,9 @@ export const products: Product[] = seeds.map((p, i) => ({
   stock: ((i * 7) % 19) + 2,
   rating: Number((4.5 + (i % 5) * 0.1).toFixed(1)),
   images: [
-    photos[i % photos.length],
-    photos[(i + 1) % photos.length],
-    photos[(i + 2) % photos.length],
+    `/products/LW-${String(i + 1).padStart(3, "0")}-1.png`,
+    `/products/LW-${String(i + 1).padStart(3, "0")}-2.png`,
+    `/products/LW-${String(i + 1).padStart(3, "0")}-3.png`,
   ],
   flag: i % 7 === 0 ? "new" : i % 4 === 0 ? "bestseller" : undefined,
 }));
