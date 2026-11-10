@@ -143,8 +143,8 @@ function HeroSection() {
               alt={HERO_SLIDES[prevSlide].alt}
               className="h-full w-full object-cover object-center opacity-80"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
           </motion.div>
         </div>
       )}
@@ -163,8 +163,8 @@ function HeroSection() {
           alt={current.alt}
           className="h-full w-full object-cover object-center opacity-80"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
       </motion.div>
 
       {/* Liquid blobs */}
@@ -183,7 +183,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-6 text-[10px] uppercase tracking-[.32em] text-white/60"
+            className="mb-6 text-[10px] font-bold uppercase tracking-[.32em] text-white/90"
           >
             {current.eyebrow}
           </motion.p>
@@ -192,11 +192,11 @@ function HeroSection() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[clamp(4rem,10vw,8.5rem)] leading-[.88] font-light"
+            className="font-display text-[clamp(4rem,10vw,8.5rem)] leading-[.88] font-semibold text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]"
           >
             {current.headline[0]}
             <br />
-            <em className="block mt-2 text-[clamp(1.5rem,3vw,2.2rem)] font-light italic text-white/70">
+            <em className="block mt-2 text-[clamp(1.5rem,3vw,2.2rem)] font-medium italic text-white/95">
               {current.headline[1]}
             </em>
           </motion.h1>
@@ -205,7 +205,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.35 }}
-            className="mt-8 max-w-md text-sm leading-7 text-white/75 font-light"
+            className="mt-8 max-w-lg text-base leading-7 font-medium text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.55)]"
           >
             {current.sub}
           </motion.p>
@@ -217,14 +217,14 @@ function HeroSection() {
           >
             <Link
               to="/shop"
-              className="group inline-flex items-center gap-3 bg-white px-8 py-4 text-[11px] uppercase tracking-[.2em] text-black transition-all hover:bg-gold hover:text-white"
+              className="group inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[.16em] text-black shadow-lg shadow-black/20 transition-all hover:bg-gold hover:text-white"
             >
               Explore the collection
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/gold-trading"
-              className="inline-flex items-center gap-3 border border-white/40 px-8 py-4 text-[11px] uppercase tracking-[.2em] text-white/80 transition-all hover:border-white hover:text-white"
+              className="inline-flex items-center gap-3 border border-white/80 bg-black/35 px-8 py-4 text-xs font-bold uppercase tracking-[.16em] text-white shadow-lg shadow-black/20 backdrop-blur-sm transition-all hover:border-white hover:bg-black/55"
             >
               Gold trading
             </Link>
