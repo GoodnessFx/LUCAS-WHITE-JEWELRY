@@ -37,7 +37,11 @@ export function CartDrawer() {
           ) : (
             cart.map((x) => (
               <div key={`${x.product.id}${x.size}`} className="flex gap-4 border-b py-5">
-                <img src={x.product.images[0]} alt="" className="h-28 w-24 object-cover" />
+                <img
+                  src={x.product.images[0]}
+                  alt={x.product.name}
+                  className="h-28 w-24 object-cover"
+                />
                 <div className="flex flex-1 flex-col">
                   <div className="flex justify-between gap-3">
                     <div>

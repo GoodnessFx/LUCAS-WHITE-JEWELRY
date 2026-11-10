@@ -24,6 +24,8 @@ export function ProductDetail() {
     setSize(p.sizes[0]);
     setImage(0);
     document.title = `${p.name} | Lucas White Jewelry`;
+    // Skip client-side JSON-LD if the page was prerendered with it already.
+    if (document.querySelector(`script[data-product-schema="${p.id}"]`)) return;
     const schema = document.createElement("script");
     schema.type = "application/ld+json";
     schema.dataset.productSchema = p.id;

@@ -294,7 +294,11 @@ export function Checkout() {
             {cart.map((x) => (
               <div key={x.product.id + x.size} className="flex gap-4 border-b py-4">
                 <div className="relative">
-                  <img src={x.product.images[0]} alt="" className="h-20 w-16 object-cover" />
+                  <img
+                src={x.product.images[0]}
+                alt={x.product.name}
+                className="h-20 w-16 object-cover"
+              />
                   <span className="absolute -right-2 -top-2 rounded-full bg-black px-1.5 py-.5 text-[10px] text-white">
                     {x.quantity}
                   </span>

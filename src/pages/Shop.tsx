@@ -1,6 +1,6 @@
 import { SlidersHorizontal, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router";
 import { ProductCard } from "@/components/ProductCard";
 import { categories, products } from "@/data/products";
@@ -11,6 +11,9 @@ export function Shop() {
   const [filters, setFilters] = useState(false);
   const [shown, setShown] = useState(20);
   const { customProducts, hiddenProductIds } = useStore();
+  useEffect(() => {
+    document.title = "Shop Fine Jewelry & Gold | Lucas White Jewelry";
+  }, []);
   const catalog = [
     ...products.filter(
       (p) => !hiddenProductIds.includes(p.id) && !customProducts.some((c) => c.id === p.id),

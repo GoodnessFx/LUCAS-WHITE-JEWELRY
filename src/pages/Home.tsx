@@ -97,8 +97,11 @@ function HeroSection() {
             transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="font-display text-[clamp(4rem,10vw,8.5rem)] leading-[.88] font-light"
           >
-            Crafted for a<br />
-            <em className="font-light italic">lifetime.</em>
+            Lucas White Jewelry
+            <br />
+            <em className="block mt-2 text-[clamp(1.5rem,3vw,2.2rem)] font-light italic text-white/70">
+              Crafted for a lifetime.
+            </em>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -106,7 +109,8 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-8 max-w-md text-sm leading-7 text-white/75 font-light"
           >
-            Exceptional jewellery and precious metals, thoughtfully sourced and finished by master hands.
+            Fine jewellery and gold trading — exceptional pieces in gold and precious metals,
+            thoughtfully sourced, individually inspected, and made to endure for generations.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -535,6 +539,11 @@ function Newsletter() {
 
 /* ─── Page ────────────────────────────────────────────────────── */
 export function Home() {
+  // Unique title for client-side navigations (prerendered HTML sets it too).
+  useEffect(() => {
+    document.title = "Lucas White Jewelry | Fine Jewelry & Gold Trading";
+  }, []);
+
   return (
     <>
       <HeroSection />

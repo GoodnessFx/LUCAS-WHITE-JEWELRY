@@ -1,6 +1,6 @@
 import { Check, ChevronDown, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router";
 import { business } from "@/config/business";
 import { FounderSection } from "@/components/FounderSection";
@@ -73,6 +73,9 @@ function Success({ text }: { text: string }) {
 /* ─── Gold Trading ────────────────────────────────────────── */
 export function GoldTrading() {
   const [sent, setSent] = useState(false);
+  useEffect(() => {
+    document.title = "Gold Trading | Lucas White Jewelry";
+  }, []);
   return (
     <>
       <section className="relative overflow-hidden bg-[#0a0a0a] px-6 py-24 text-white">
@@ -191,6 +194,9 @@ export function GoldTrading() {
 
 /* ─── About ───────────────────────────────────────────────── */
 export function About() {
+  useEffect(() => {
+    document.title = "Our Story | Lucas White Jewelry";
+  }, []);
   return (
     <>
       <Hero title="Jewellery with integrity." eyebrow="Our story" />
@@ -255,6 +261,9 @@ export function About() {
 
 /* ─── Locations ───────────────────────────────────────────── */
 export function Locations() {
+  useEffect(() => {
+    document.title = "Locations | Lucas White Jewelry";
+  }, []);
   return (
     <>
       <Hero title="Three cities. One standard." eyebrow="Our locations" />
@@ -300,6 +309,9 @@ export function Locations() {
 /* ─── Contact ─────────────────────────────────────────────── */
 export function Contact() {
   const [sent, setSent] = useState(false);
+  useEffect(() => {
+    document.title = "Contact | Lucas White Jewelry";
+  }, []);
   return (
     <>
       <Hero title="We are here to help." eyebrow="Contact" />
@@ -391,6 +403,9 @@ const faqs = [
 
 export function FAQ() {
   const [open, setOpen] = useState(0);
+  useEffect(() => {
+    document.title = "FAQ | Lucas White Jewelry";
+  }, []);
   return (
     <>
       <Hero title="Questions, answered." eyebrow="Client care" />

@@ -1,9 +1,9 @@
 {
   "description": "Shop fine jewelry and precious metals, explore gold trading services, and manage purchases from checkout to order tracking with Lucas White Jewelry.",
-  "title": "Lucas White Jewelry | Fine Jewelry & Precious Metals",
+  "title": "Lucas White Jewelry | Fine Jewelry & Gold Trading",
   "language": "en",
   "openGraph": {
-    "image": "https://images.unsplash.com/photo-1615974570340-b01904376f91?auto=format&fit=crop&w=1200&q=85"
+    "image": "https://lucas-white-jewelry.shop/og-image.jpg"
   },
   "robots": {
     "index": true
